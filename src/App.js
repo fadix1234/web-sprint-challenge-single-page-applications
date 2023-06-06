@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { Routes, Route, Link } from "react-router-dom";
 import Box from "./Components/Pizza";
 
@@ -16,7 +15,7 @@ const App = () => {
         <Link id="pizza-form" to ="/pizza">order-pizza</Link>&nbsp;
       </nav>
       <Routes>
-        <Route path="/" element={<homepage/>} />
+        <Route path="/" element={<Homepage/>} />
         <Route path="/pizza" element={<Box/>} />
       </Routes>
 
