@@ -1,10 +1,42 @@
 import axios from "axios";
+import * as yup from 'yup';
 import React, {useState, useEffect} from 'react';
+
+
+const schema = yup.object().shape({
+  name: yup.string().required().min(2,"name must be at least 2 characters")
+});
+
 
 export default function Box() {
   
   const [form, setForm] = useState({ name:'', size:'', topping1:'', topping2:'', topping3:'', topping4:'', special:''});
+  const [errors, setErrors] = useState({ name:'', size:'', topping1:'', topping2:'', topping3:'', topping4:'', special:''});
+  const[disabled, setDisabled] = useState(true);
 
+  const setFormErrors = (name, value) => {
+    yup.reach(schema,name).validate(value)
+     .then (() => setErrors({ ...errors, [name]: '' }))
+     .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
+   }
+
+   
+    const change = event => {
+    const { checked, value, name, type } = event.target;
+    const valueToUse = type === 'checked' ? checked : value;
+    setFormErrors(name, valueToUse);
+    setForm({ ...form, [name]: valueToUse });
+  }
+ 
+
+
+
+  useEffect (() => {
+    schema.isValid(form).then(valid => setDisabled(!valid))
+   }, [form])
+
+
+  
   const submit = event => {
     debugger
     event.preventDefault()
@@ -14,13 +46,16 @@ export default function Box() {
       setForm({name:'', size:'', topping1:'', topping2:'', topping3:'', topping4:'', special:''})
     })
     .catch(err => {
+
     
     })
   }
 
     return (
       <div>
+        <div>{errors.name}</div>
         <h1>order-pizza</h1>
+        
 
         <form onSubmit={submit}>
          <label>name
@@ -58,7 +93,7 @@ export default function Box() {
         id="special-text" type="text"/>
        </label>
 
-       <button id="order-button">submit</button>
+       <button disabled ={disabled} id="order-button">submit</button>
 
       </form>
 
