@@ -5,6 +5,7 @@ import Box from "./Components/Pizza";
 
 
 
+
 const App = () => {
   return (
     <div>
@@ -15,7 +16,7 @@ const App = () => {
         <Link id="pizza-form" to ="/pizza">order-pizza</Link>&nbsp;
       </nav>
       <Routes>
-        <Route path="/" element={<Homepage/>} />
+        <Route path="/" element={<homepage/>} />
         <Route path="/pizza" element={<Box/>} />
       </Routes>
 
