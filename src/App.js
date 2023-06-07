@@ -1,6 +1,8 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Box from "./Components/Pizza";
+import Pizza from "./Components/Pizza";
+import Homepage from './Components/Homepage';
+
 
 
 
@@ -13,12 +15,12 @@ const App = () => {
       <h1>Lambda Eats</h1>
       
       <nav>
-        <Link id="order-pizza" to ="/">homepage</Link>&nbsp;
+        <Link id="order-pizza" to ="/">Homepage</Link>&nbsp;
         <Link id="pizza-form" to ="/pizza">order-pizza</Link>&nbsp;
       </nav>
       <Routes>
-        <Route path="/" element={<homepage/>} />
-        <Route path="/pizza" element={<Box/>} />
+        <Route path="/" element={<Homepage/>} />
+        <Route path="/pizza" element={<Pizza/>} />
       </Routes>
 
       

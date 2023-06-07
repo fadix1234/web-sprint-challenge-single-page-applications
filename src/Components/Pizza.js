@@ -3,12 +3,14 @@ import * as yup from 'yup';
 import React, {useState, useEffect} from 'react';
 
 
+
+
 const schema = yup.object().shape({
   name: yup.string().required().min(2,"name must be at least 2 characters")
 });
 
 
-export default function Box() {
+export default function Pizza() {
   
   const [form, setForm] = useState({ name:'', size:'', topping1:'', topping2:'', topping3:'', topping4:'', special:''});
   const [errors, setErrors] = useState({ name:'', size:'', topping1:'', topping2:'', topping3:'', topping4:'', special:''});
@@ -57,7 +59,7 @@ export default function Box() {
         <h1>order-pizza</h1>
         
 
-        <form onSubmit={submit}>
+        <form id= "pizza-form" onSubmit={submit}>
          <label>name
          <input onChange={evt => setForm(evt.target.value)}
           id="name-input" type="text"/>
@@ -93,7 +95,7 @@ export default function Box() {
         id="special-text" type="text"/>
        </label>
 
-       <button disabled ={disabled} id="order-button">submit</button>
+       <button id="order-button">submit</button>
 
       </form>
 
