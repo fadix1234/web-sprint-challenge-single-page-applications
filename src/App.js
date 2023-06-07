@@ -15,8 +15,8 @@ const App = () => {
       <h1>Lambda Eats</h1>
       
       <nav>
-        <Link id="order-pizza" to ="/">Homepage</Link>&nbsp;
-        <Link id="pizza-form" to ="/pizza">order-pizza</Link>&nbsp;
+        <Link to ="/">Homepage</Link>&nbsp;
+        <Link id="order-pizza" to ="/pizza">order-pizza</Link>&nbsp;
       </nav>
       <Routes>
         <Route path="/" element={<Homepage/>} />
